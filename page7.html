@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #app div {
+            border: 1px solid #e7e7e7;
+            height: 400px;
+            padding-top: 20px;
+        }
+        
+        #app4 a {
+            display: inline-block;
+            height: 40px;
+            line-height: 40px;
+            font-size: 16px;
+            width: 25%;
+            text-align: center;
+            background: #e1e1e1;
+            color: #333;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app5">
+        <div id="app4">
+            <a href="javascript:;" @click="curId=0" :class="{'':curId===0}">登录</a>
+            <a href="javascript:;" @click="curId=1" :class="{'':curId===1}">注册</a>
+        </div>
+        <div id="app">
+            <div v-show="curId===0">
+                用户名： <input type="text" v-model="loginUser" name="loginUser" placeholder="请输入用户名" v-on:keyup.enter="login"> 密码：
+                <input type="password" v-model="loginPass" name="loginPass" placeholder="请输入密码" v-on:keyup.enter="login">
+                <button v-on:click="login">登录</button>
+            </div>
+            <div v-show="curId===1">
+                用户名：<input type="text" v-model="userName" name="userName" placeholder="请输入用户名" v-on:keyup.enter="add"> 密码：
+                <input type="password" v-model="passWord" name="passWord" placeholder="请输入密码" v-on:keyup.enter="add">
+                <button v-on:click="add">注册</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    new Vue({
+        el: "#app5",
+        data: {
+            curId: 0,
+            userName: "",
+            passWord: "",
+            loginUser: "",
+            loginPass: ""
+        },
+        methods: {
+            add: function() {
+                if (this.userName === "") {
+                    alert("账号不能为空!")
+                }
+                if (this.passWord === "") {
+                    alert("密码不能为空!")
+                }
+                if (this.userName != "" && this.passWord != "") {
+                    alert("注册成功!")
+                }
+            },
+            login: function() {
+                if (this.loginUser === "") {
+                    alert("账号不能为空!")
+                }
+                if (this.loginPass === "") {
+                    alert("密码不能为空!")
+                }
+                if (this.loginUser != "" && this.loginPass != "") {
+                    alert("登录成功!")
+                }
+            }
+        },
+    })
+</script>
+
+</html>
